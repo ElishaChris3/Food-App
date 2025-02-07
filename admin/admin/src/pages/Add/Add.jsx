@@ -4,7 +4,7 @@ import { assets } from "../../assets/assets";
 import axios from "axios";
 import { toast } from "react-toastify";
 const Add = () => {
-  const url = "http://localhost:4000";
+  const url = "https://food-app-l324.vercel.app";
   const [image, setimage] = useState(false);
   const [data, setdata] = useState({
     name: "",
