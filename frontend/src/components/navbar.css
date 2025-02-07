@@ -1,0 +1,138 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  align-self: center;
+  padding: 20px 0px;
+}
+
+.list {
+  margin-top: 10px;
+  display: flex;
+  list-style: none;
+  gap: 25px;
+  cursor: pointer;
+}
+
+.right-contents {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.navbar button {
+  padding: 10px 30px;
+  border-radius: 50px;
+  color: rgb(0, 0, 0);
+  background: transparent;
+  border: 1px solid rgb(255, 98, 0);
+  font-size: 15px;
+}
+
+button:hover {
+  background-color: orange;
+  color: aliceblue;
+  border: 1px solid transparent;
+  transition: 0.3s;
+}
+
+.activeclass {
+  border-bottom: 1px solid rgb(255, 98, 0);
+  background-color: none;
+  align-items: center;
+}
+
+li {
+  color: black;
+}
+
+.navbar-profile {
+  position: relative;
+}
+
+.nav-profile-dropdown {
+  position: absolute;
+  display: none;
+  right: 0;
+  z-index: 1;
+}
+
+.navbar-profile:hover .nav-profile-dropdown {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff2ef;
+  padding: 1px 10px;
+  border-radius: 4px;
+  border: 1px solid tomato;
+  outline: 2px solid white;
+  list-style: none;
+}
+
+li {
+  text-decoration: black;
+}
+.nav-profile-dropdown li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.nav-profile-dropdown img {
+  width: 20px;
+}
+
+/* Media Queries for Responsiveness */
+
+/* For tablets and small screens */
+@media (max-width: 1050px) {
+  .navbar .logo {
+    width: 140px;
+  }
+
+  .list {
+    font-size: 17px;
+    gap: 20px;
+  }
+
+  .right-contents {
+    gap: 30px;
+  }
+  .right-contents img {
+    width: 22px;
+  }
+
+  .right-contents button {
+    padding: 8px 25px;
+  }
+}
+
+@media (max-width: 900px) {
+  .navbar .logo {
+    width: 120px;
+  }
+
+  .list {
+    font-size: 16px;
+    gap: 15px;
+  }
+
+  .right-contents {
+    gap: 15px;
+  }
+  .right-contents img {
+    width: 20px;
+  }
+
+  .right-contents button {
+    padding: 7px 20px;
+    font-size: 15px;
+  }
+}
+
+/* For mobile screens */
+@media (max-width: 750px) {
+  .list {
+    display: none;
+  }
+}

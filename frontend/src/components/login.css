@@ -1,0 +1,58 @@
+.loging {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background-color: #000000bd;
+  display: grid;
+}
+
+.login-pop {
+  place-self: center;
+  width: max(23vw, 330px);
+  color: #808080;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  padding: 25px 40px;
+  border-radius: 8px;
+  font-size: 14px;
+  animation: FadeIn 1s;
+}
+
+.login-contents {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: black;
+}
+
+.login-input {
+  flex-direction: column;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.login-input input {
+  width: 100%;
+  text-align: left;
+  border: 1px solid rgb(155, 155, 155);
+  border-radius: 4px;
+  outline: none;
+  height: 30px;
+  padding-left: 5px;
+  font-size: 15px;
+}
+
+.login-checkbox {
+  display: flex;
+  align-items: start;
+  gap: 8px;
+  margin-top: auto;
+}
+
+span {
+  color: tomato;
+}
