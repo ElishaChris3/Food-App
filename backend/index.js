@@ -16,7 +16,7 @@ console.log("DB url : " + process.env.MONGO_URL);
 AppJs.use(cors());
 AppJs.use(express.json());
 //  Changes
-AppJs.use("/images");
+
 AppJs.use("/api/user", userRouter);
 AppJs.use("/api/cart", cartRouter);
 AppJs.use("/api/order", orderRouter);
