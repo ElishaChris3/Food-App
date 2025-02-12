@@ -13,8 +13,9 @@ const AppJs = express();
 
 console.log("DB url : " + process.env.MONGO_URL);
 
-AppJs.use(cors());
+//AppJs.use(cors());
 AppJs.use(express.json());
+AppJs.use(cors({ origin: "*", methods: "GET,POST,OPTIONS" }));
 //  Changes
 
 AppJs.use("/api/user", userRouter);
