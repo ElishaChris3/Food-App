@@ -7,7 +7,8 @@ import { assets } from "../../public/assets";
 const Login = ({ setshowLogin }) => {
   const { token, settoken } = useContext(Storecontext);
   const [currState, setcurrState] = useState("Login");
-  const url = "https://food-app-l324.vercel.app";
+  const url = "http://localhost:4000";
+
   const [data, setdata] = useState({
     name: "",
     email: "",
