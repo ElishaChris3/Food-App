@@ -14,7 +14,6 @@ const App = () => {
 
   return (
     <>
-      {"hello"}
       {showLogin ? <Login setshowLogin={setshowLogin} /> : <></>}
       <div className="App">
         <Navbar setshowLogin={setshowLogin}></Navbar>
