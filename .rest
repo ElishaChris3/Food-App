@@ -3,7 +3,7 @@ POST https://backend-elisha.vercel.app/api/user/register
 Content-Type: application/json
 
 {
-  "name": "rabbiya",
+  "name": "rabbiyas",
   "email": "rabbiya@example.com",
   "password": "123456789",
   
