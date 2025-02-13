@@ -1,0 +1,28 @@
+
+### Register User
+POST https://backend-elisha.vercel.app/api/user/register
+Content-Type: application/json
+
+{
+  "name": "John",
+  "email": "johndoe@gmail.com",
+  "password": "123456789"
+}
+
+### Login User
+POST https://backend-elisha.vercel.app/api/user/login
+Content-Type: application/json
+
+{
+  "email": "husn@gmail.com",
+  "password": "123456789"
+}
+
+### Get User Profile (Requires Token)
+GET https://backend-elisha.vercel.app/api/user/verify
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YWQ4YWNmMDBmN2IxNjRiZWIzZDE5OCIsImlhdCI6MTczOTQyNjUxMSwiZXhwIjoxNzM5NTEyOTExfQ.Na5582zvgT7uFxht39KEwCo2pJMC8K7nWnviMIUFKbI
+
+
+
+
