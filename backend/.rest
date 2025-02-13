@@ -9,6 +9,19 @@ Content-Type: application/json
   "password": "123456789"
 }
 
+### NEW Register User
+POST https://backend-elisha.vercel.app/api/user/register
+Content-Type: application/json
+
+{
+  "name": "biya",
+  "email": "biya@gmail.com",
+  "password": "123456789"
+}
+
+
+
+
 ### Login User
 POST https://backend-elisha.vercel.app/api/user/login
 Content-Type: application/json
