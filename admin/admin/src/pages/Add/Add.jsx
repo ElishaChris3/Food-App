@@ -30,7 +30,10 @@ const Add = () => {
     formData.append("price", Number(data.price));
     formData.append("category", data.category);
 
-    const response = await axios.post(`${url}/api/foods/add`, formData);
+    const response = await axios.post(
+      `https://backend-elisha.vercel.app/api/foods/add`,
+      formData
+    );
     if (response.data.success) {
       setdata({
         name: "",
