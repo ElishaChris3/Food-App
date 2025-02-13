@@ -16,7 +16,7 @@ console.log("DB URL: " + process.env.MONGO_URL);
 // ✅ Enable CORS for All Origins
 AppJs.use(
   cors({
-    origin: "https://admin-rho-sage.vercel.app", // Allows requests from any domain
+    origin: "*", // Allows requests from any domain
     methods: "GET, POST, OPTIONS",
     allowedHeaders: "Content-Type",
   })
@@ -26,10 +26,7 @@ AppJs.use(express.json()); // Enable JSON body parsing
 
 // ✅ Handle Preflight Requests (OPTIONS)
 AppJs.use((req, res, next) => {
-  res.header(
-    "Access-Control-Allow-Origin",
-    "https://admin-rho-sage.vercel.app"
-  );
+  res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
   res.header("Access-Control-Allow-Headers", "Content-Type");
 
