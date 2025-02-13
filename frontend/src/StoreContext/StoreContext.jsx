@@ -8,7 +8,7 @@ const StoreContextProvider = (props) => {
   const [cartItem, setcartItem] = useState({});
   const [token, settoken] = useState("");
   const [food_list, setfood_list] = useState([]);
-  const url = "https://backend-elisha.vercel.app";
+  const url = "https://hamra-admin.vercel.app";
 
   const AddCartItems = async (itemId) => {
     if (!cartItem[itemId]) {
