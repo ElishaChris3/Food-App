@@ -2,7 +2,7 @@ const express = require("express");
 const connectDB = require("./Config");
 const foodRoute = require("./Route");
 const cartRouter = require("./cartRoute");
-const cors = require("cors");
+//const cors = require("cors");
 const userRouter = require("./userRoute");
 const orderRouter = require("./orderRouter");
 
@@ -14,28 +14,28 @@ const AppJs = express();
 console.log("DB URL: " + process.env.MONGO_URL);
 
 // ✅ Enable CORS for Specific Origin
-AppJs.use(
-  cors({
-    origin: "http://localhost:5176", // Allow only frontend
-    methods: "GET, POST, PUT, DELETE, OPTIONS",
-    allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: true, // Allow cookies if needed
-  })
-);
+// AppJs.use(
+//   cors({
+//     origin: "http://localhost:5176", // Allow only frontend
+//     methods: "GET, POST, PUT, DELETE, OPTIONS",
+//     allowedHeaders: ["Content-Type", "Authorization"],
+//     credentials: true, // Allow cookies if needed
+//   })
+// );
 
-// ✅ Handle Preflight Requests (OPTIONS)
-AppJs.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "http://localhost:5176");
-  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
-  res.header("Access-Control-Allow-Credentials", "true"); // Allow cookies if needed
+// // ✅ Handle Preflight Requests (OPTIONS)
+// AppJs.use((req, res, next) => {
+//   res.header("Access-Control-Allow-Origin", "http://localhost:5176");
+//   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+//   res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+//   res.header("Access-Control-Allow-Credentials", "true"); // Allow cookies if needed
 
-  if (req.method === "OPTIONS") {
-    return res.status(200).end();
-  }
+//   if (req.method === "OPTIONS") {
+//     return res.status(200).end();
+//   }
 
-  next();
-});
+//   next();
+// });
 
 // ✅ Enable JSON Parsing
 AppJs.use(express.json());
