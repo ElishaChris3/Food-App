@@ -5,7 +5,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 const Add = () => {
   //const url = "https://food-app-l324.vercel.app";
-  const url = "https://backend-elisha.vercel.app";
+  const url = import.meta.env.VITE_backend_link;
 
   const [image, setimage] = useState(false);
   const [data, setdata] = useState({
