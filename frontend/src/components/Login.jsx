@@ -7,7 +7,7 @@ import { assets } from "../../public/assets";
 const Login = ({ setshowLogin }) => {
   const { token, settoken } = useContext(Storecontext);
   const [currState, setcurrState] = useState("Login");
-  const url = "https://hamra-admin.vercel.app";
+  const url = "https://rabbiya-backend.vercel.app";
 
   const [data, setdata] = useState({
     name: "",
