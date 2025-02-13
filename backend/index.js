@@ -13,22 +13,25 @@ const AppJs = express();
 
 console.log("DB URL: " + process.env.MONGO_URL);
 
-// ✅ Enable CORS for All Origins
+// ✅ Enable CORS for Specific Origin
 AppJs.use(
   cors({
-    origin: "*", // Allows requests from any domain
-    methods: "GET, POST, OPTIONS",
-    allowedHeaders: "Content-Type",
+    origin: "https://admin-swart-seven.vercel.app", // Allow only frontend
+    methods: "GET, POST, PUT, DELETE, OPTIONS",
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true, // Allow cookies if needed
   })
 );
 
-AppJs.use(express.json()); // Enable JSON body parsing
-
 // ✅ Handle Preflight Requests (OPTIONS)
 AppJs.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
-  res.header("Access-Control-Allow-Headers", "Content-Type");
+  res.header(
+    "Access-Control-Allow-Origin",
+    "https://admin-swart-seven.vercel.app"
+  );
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  res.header("Access-Control-Allow-Credentials", "true"); // Allow cookies if needed
 
   if (req.method === "OPTIONS") {
     return res.status(200).end();
@@ -36,6 +39,9 @@ AppJs.use((req, res, next) => {
 
   next();
 });
+
+// ✅ Enable JSON Parsing
+AppJs.use(express.json());
 
 // ✅ Connect to Database
 connectDB();
