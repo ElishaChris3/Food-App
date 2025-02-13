@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 const List = () => {
   const [list, setlist] = useState([]);
   //const url = "https://food-app-l324.vercel.app";
-  const url = "https://food-app-whqh.vercel.app";
+  const url = "https://backend-elisha.vercel.app";
 
   const fetchlist = async () => {
     const response = await axios.get(`${url}/api/foods/list`);
