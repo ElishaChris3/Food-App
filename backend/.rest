@@ -34,8 +34,6 @@ Content-Type: application/json
 ### Get User Profile (Requires Token)
 GET https://backend-elisha.vercel.app/api/user/verify
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YWQ4YWNmMDBmN2IxNjRiZWIzZDE5OCIsImlhdCI6MTczOTQyNjUxMSwiZXhwIjoxNzM5NTEyOTExfQ.Na5582zvgT7uFxht39KEwCo2pJMC8K7nWnviMIUFKbI
-
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YWQ4OTg5MDBmN2IxNjRiZWIzZDE5MiIsImlhdCI6MTczOTU0MTgxOCwiZXhwIjoxNzM5NjI4MjE4fQ.1j6DsRzwkpOTH0g-DYuqv0JDB9A_c78RcqICI0qmhgs
 
 

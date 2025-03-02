@@ -3,8 +3,8 @@ import "./add.css";
 import { assets } from "../../assets/assets";
 import axios from "axios";
 import { toast } from "react-toastify";
+
 const Add = () => {
-  //const url = "https://food-app-l324.vercel.app";
   const url = import.meta.env.VITE_backend_link;
 
   const [image, setimage] = useState(false);
@@ -16,41 +16,38 @@ const Add = () => {
   });
 
   const onChangeHandler = (event) => {
-    const name = event.target.name;
-    const value = event.target.value;
-    setdata((data) => ({ ...data, [name]: value }));
+    const { name, value } = event.target;
+    setdata((prevData) => ({ ...prevData, [name]: value }));
   };
 
   const onSubmitHandler = async (event) => {
     event.preventDefault();
+    if (!image) {
+      toast.error("Please upload an image.");
+      return;
+    }
+
     const formData = new FormData();
     formData.append("image", image);
     formData.append("name", data.name);
     formData.append("description", data.description);
-    formData.append("price", Number(data.price));
+    formData.append("price", data.price);
     formData.append("category", data.category);
 
-    const response = await axios.post(
-      `https://backend-elisha.vercel.app/api/foods/add`,
-      formData
-    );
-    if (response.data.success) {
-      setdata({
-        name: "",
-        description: "",
-        price: "",
-        category: "",
-      });
-      setimage(false);
-      toast.success(response.data.message);
-    } else {
-      toast.error(response.data.message);
+    try {
+      const response = await axios.post(`${url}/api/foods/add`, formData);
+      if (response.data.success) {
+        setdata({ name: "", description: "", price: "", category: "Salad" });
+        setimage(false);
+        toast.success(response.data.message);
+      } else {
+        toast.error(response.data.message);
+      }
+    } catch (error) {
+      toast.error("Something went wrong. Please try again.");
+      console.error("Error:", error);
     }
   };
-
-  //   useEffect(() => {
-  //     console.log(data);
-  //   }, [data]);
 
   return (
     <div className="add">
@@ -60,41 +57,50 @@ const Add = () => {
           <label htmlFor="image">
             <img
               src={image ? URL.createObjectURL(image) : assets.upload_area}
-              alt=""
+              alt="Upload"
             />
           </label>
           <input
-            onChange={(e) => setimage(e.target.files[0])}
+            onChange={(e) => {
+              if (e.target.files.length > 0) {
+                setimage(e.target.files[0]);
+              }
+            }}
             type="file"
             id="image"
             hidden
-            //required
           />
         </div>
         <div className="add-product-name flex-col">
-          <p>Product name</p>
+          <p>Product Name</p>
           <input
             onChange={onChangeHandler}
             value={data.name}
             type="text"
             name="name"
-            placeholder="Type Here "
+            placeholder="Type Here"
+            required
           />
         </div>
         <div className="add-product-description flex-col">
-          <p>Product description</p>
+          <p>Product Description</p>
           <textarea
             onChange={onChangeHandler}
             value={data.description}
-            type="text"
             name="description"
-            placeholder="Type Here "
+            placeholder="Type Here"
+            required
           />
         </div>
         <div className="add-category-price">
           <div className="add-category flex-col">
             <p>Product Category</p>
-            <select name="category" onChange={onChangeHandler} id="">
+            <select
+              name="category"
+              onChange={onChangeHandler}
+              value={data.category}
+              required
+            >
               <option value="Salad">Salad</option>
               <option value="Rolls">Rolls</option>
               <option value="Deserts">Deserts</option>
@@ -110,13 +116,14 @@ const Add = () => {
             <input
               onChange={onChangeHandler}
               value={data.price}
-              type="Number"
+              type="number"
               name="price"
               placeholder="$20"
+              required
             />
           </div>
         </div>
-        <button type="submit" className="add-btn ">
+        <button type="submit" className="add-btn">
           ADD
         </button>
       </form>

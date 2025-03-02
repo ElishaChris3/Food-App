@@ -2,7 +2,7 @@ import React from "react";
 
 const Footers = () => {
   return (
-    <div className="container">
+    <div id="contact" className="container">
       <footer className="row row-cols-5 py-5 my-5 border-top  ">
         <div className="col">
           <a
@@ -13,7 +13,7 @@ const Footers = () => {
               <use xlinkHref="#bootstrap" />
             </svg>
           </a>
-          <p className="text-muted">© 2021</p>
+          <h1 className="text-muted">Contact Us</h1>
         </div>
 
         <div className="col"></div>
@@ -22,29 +22,19 @@ const Footers = () => {
           <h5>Section</h5>
           <ul className="nav flex-column">
             <li className="nav-item mb-2">
-              <a href="#" className="nav-link p-0 text-muted">
-                Home
-              </a>
+              <a className="nav-link p-0 text-muted">Home</a>
             </li>
             <li className="nav-item mb-2">
-              <a href="#" className="nav-link p-0 text-muted">
-                Features
-              </a>
+              <a className="nav-link p-0 text-muted">Features</a>
             </li>
             <li className="nav-item mb-2">
-              <a href="#" className="nav-link p-0 text-muted">
-                Pricing
-              </a>
+              <a className="nav-link p-0 text-muted">Pricing</a>
             </li>
             <li className="nav-item mb-2">
-              <a href="#" className="nav-link p-0 text-muted">
-                FAQs
-              </a>
+              <a className="nav-link p-0 text-muted">FAQs</a>
             </li>
             <li className="nav-item mb-2">
-              <a href="#" className="nav-link p-0 text-muted">
-                About
-              </a>
+              <a className="nav-link p-0 text-muted">About</a>
             </li>
           </ul>
         </div>
@@ -53,60 +43,19 @@ const Footers = () => {
           <h5>Section</h5>
           <ul className="nav flex-column">
             <li className="nav-item mb-2">
-              <a href="#" className="nav-link p-0 text-muted">
-                Home
-              </a>
+              <a className="nav-link p-0 text-muted">Home</a>
             </li>
             <li className="nav-item mb-2">
-              <a href="#" className="nav-link p-0 text-muted">
-                Features
-              </a>
+              <a className="nav-link p-0 text-muted">Features</a>
             </li>
             <li className="nav-item mb-2">
-              <a href="#" className="nav-link p-0 text-muted">
-                Pricing
-              </a>
+              <a className="nav-link p-0 text-muted">Pricing</a>
             </li>
             <li className="nav-item mb-2">
-              <a href="#" className="nav-link p-0 text-muted">
-                FAQs
-              </a>
+              <a className="nav-link p-0 text-muted">FAQs</a>
             </li>
             <li className="nav-item mb-2">
-              <a href="#" className="nav-link p-0 text-muted">
-                About
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        <div className="col">
-          <h5>Section</h5>
-          <ul className="nav flex-column">
-            <li className="nav-item mb-2">
-              <a href="#" className="nav-link p-0 text-muted">
-                Home
-              </a>
-            </li>
-            <li className="nav-item mb-2">
-              <a href="#" className="nav-link p-0 text-muted">
-                Features
-              </a>
-            </li>
-            <li className="nav-item mb-2">
-              <a href="#" className="nav-link p-0 text-muted">
-                Pricing
-              </a>
-            </li>
-            <li className="nav-item mb-2">
-              <a href="#" className="nav-link p-0 text-muted">
-                FAQs
-              </a>
-            </li>
-            <li className="nav-item mb-2">
-              <a href="#" className="nav-link p-0 text-muted">
-                About
-              </a>
+              <a className="nav-link p-0 text-muted">About</a>
             </li>
           </ul>
         </div>

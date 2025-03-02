@@ -55,12 +55,12 @@ const AddToCart = () => {
             <hr />
             <div className="cart-total-details">
               <b>Delievery Fees</b>
-              <b>${2}</b>
+              <b>${getTotalPrice() === 0 ? 0 : 2}</b>
             </div>
             <hr />
             <div className="cart-total-details">
               <b>Total</b>
-              <b>{getTotalPrice() + 2}</b>
+              <b>{getTotalPrice() === 0 ? 0 : getTotalPrice() + 2}</b>
             </div>
             <button onClick={() => navigate("/placeorder")} className="btn">
               Proceed to Checkout

@@ -9,7 +9,7 @@
 
 .header {
   height: 34vw;
-  background-image: url("../../public/header_img.png");
+  background-image: url("../../public/dish2.jpg");
   margin: 30px auto;
   border-radius: 20px;
   position: relative;
@@ -36,7 +36,7 @@
   font-size: max(4.5vw, 22px);
 }
 
-button {
+.btn1 {
   padding: 10px 30px;
   border-radius: 50px;
   color: rgb(0, 0, 0);
@@ -46,6 +46,7 @@ button {
 }
 
 button:hover {
+  border-radius: 50px;
   background-color: rgb(255, 98, 0);
   color: aliceblue;
   border: 1px solid white;

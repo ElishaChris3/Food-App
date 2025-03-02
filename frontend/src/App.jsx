@@ -8,6 +8,7 @@ import PlaceOrder from "./pages/PlaceOrder/PlaceOrder";
 import Footers from "./components/Footers";
 import Login from "./components/Login";
 import Verification from "./pages/Verification/Verification";
+import MyOrders from "./pages/MyOrders/MyOrders";
 
 const App = () => {
   const [showLogin, setshowLogin] = useState(false);
@@ -22,6 +23,7 @@ const App = () => {
           <Route path="/cart" element={<AddToCart></AddToCart>}></Route>
           <Route path="/placeorder" element={<PlaceOrder />}></Route>
           <Route path="/verify" element={<Verification />}></Route>
+          <Route path="/myorders" element={<MyOrders />}></Route>
         </Routes>
       </div>
       <Footers />

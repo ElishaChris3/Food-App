@@ -4,6 +4,8 @@ const userModel = require("./userModel");
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
+const FRONTEND_URL = "http://localhost:5173";
+
 const placeOrder = async (req, res) => {
   try {
     // Save new order to the database
@@ -46,8 +48,8 @@ const placeOrder = async (req, res) => {
     const session = await stripe.checkout.sessions.create({
       line_items: line_items,
       mode: "payment",
-      success_url: `${process.env.FRONTEND_URL}/verify?success=true&orderId=${newOrder._id}`,
-      cancel_url: `${process.env.FRONTEND_URL}/verify?success=false&orderId=${newOrder._id}`,
+      success_url: `${FRONTEND_URL}/myorders?success=true&orderId=${newOrder._id}`,
+      cancel_url: `${FRONTEND_URL}/?success=false&orderId=${newOrder._id}`,
     });
 
     res.json({ success: true, session_url: session.url });
@@ -78,4 +80,34 @@ const userOrder = async (req, res) => {
   }
 };
 
-module.exports = { placeOrder, verifyOrder, userOrder };
+// List all the orders in the Admin Panel
+
+const listOrders = async (req, res) => {
+  try {
+    const listAllOrders = await orderModel.find({});
+    res.json({ success: true, data: listAllOrders });
+  } catch (error) {
+    res.json({ success: false, msg: error });
+  }
+};
+
+// Api for updating the order Status
+
+const updateStatus = async (req, res) => {
+  try {
+    await orderModel.findByIdAndUpdate(req.body.orderId, {
+      status: req.body.status,
+    });
+    res.json({ success: true, message: "Updated" });
+  } catch (error) {
+    res.json({ success: false, message: error });
+  }
+};
+
+module.exports = {
+  placeOrder,
+  verifyOrder,
+  userOrder,
+  listOrders,
+  updateStatus,
+};

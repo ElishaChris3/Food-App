@@ -20,6 +20,7 @@ AppJs.use("/api/user", userRouter);
 AppJs.use("/api/cart", cartRouter);
 AppJs.use("/api/order", orderRouter);
 AppJs.use("/api/foods", foodRoute);
+AppJs.use("/images", express.static("uploads"));
 connectDB();
 
 AppJs.get("/", (req, res) => {

@@ -4,7 +4,7 @@ const multer = require("multer");
 const { addFood, removeFood, listFood } = require("./Controller");
 
 const storage = multer.diskStorage({
-  destination: "./",
+  destination: "uploads",
   filename: (req, file, cb) => {
     return cb(null, `${Date.now()} ${file.originalname}`);
   },

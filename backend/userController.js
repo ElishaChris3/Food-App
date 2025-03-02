@@ -84,7 +84,7 @@ const RegisterUser = async (req, res) => {
 // Token Verification
 
 const verifyToken = (req, res, next) => {
-  const token = req.headers.authorization?.split(" ")[1]; // Extract token from the "Authorization" header
+  const token = req.headers.authorization?.split(" ")[1];
   if (!token) {
     return res
       .status(401)
@@ -94,9 +94,9 @@ const verifyToken = (req, res, next) => {
   try {
     // Verify token
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = decoded; // Attach the decoded token payload (e.g., user ID) to the request object
+    req.user = decoded;
     res.json({ success: true, userId: req.user.id });
-    next(); // Proceed to the next middleware or route handler
+    next();
   } catch (error) {
     return res
       .status(403)

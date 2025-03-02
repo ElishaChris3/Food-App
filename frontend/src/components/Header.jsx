@@ -1,5 +1,6 @@
 import React from "react";
 import "./header.css";
+import { Link as ScrollLink } from "react-scroll";
 const Header = () => {
   return (
     <div className="header">
@@ -10,7 +11,10 @@ const Header = () => {
           images or, for flexible boxes, numerous background images, one
           per-corner, slapped on multiple nested div elements.
         </p>
-        <button>View Products</button>
+
+        <ScrollLink to="foods">
+          <button className="btn1">View Products</button>
+        </ScrollLink>
       </div>
     </div>
   );

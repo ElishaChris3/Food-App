@@ -8,7 +8,7 @@ const StoreContextProvider = (props) => {
   const [cartItem, setcartItem] = useState({});
   const [token, settoken] = useState("");
   const [food_list, setfood_list] = useState([]);
-  const url = "https://rabbiya-backend.vercel.app";
+  const url = "http://localhost:4000";
 
   const AddCartItems = async (itemId) => {
     if (!cartItem[itemId]) {

@@ -3,6 +3,8 @@ import "../components/navbar.css";
 import { assets } from "./../../public/assets";
 import { Link, useNavigate } from "react-router-dom";
 import { Storecontext } from "../StoreContext/StoreContext";
+import { Link as ScrollLink } from "react-scroll";
+
 const Navbar = ({ setshowLogin }) => {
   const [actives, setactives] = useState("");
   const { token, settoken } = useContext(Storecontext);
@@ -35,27 +37,38 @@ const Navbar = ({ setshowLogin }) => {
               Home
             </li>
           </Link>
-          <li
-            onClick={() => {
-              setactives("Contact Us");
-            }}
-            className={actives === "Contact Us" ? "activeclass" : ""}
+          <ScrollLink to="contact">
+            <li
+              onClick={() => {
+                setactives("Contact Us");
+              }}
+              className={actives === "Contact Us" ? "activeclass" : ""}
+            >
+              Contact Us
+            </li>
+          </ScrollLink>
+          <ScrollLink
+            to="explore"
+            spy={false}
+            smooth={true}
+            hashSpy={true}
+            offset={0}
+            duration={100}
           >
-            Contact Us
-          </li>
-          <li
-            onClick={() => {
-              setactives("products");
-            }}
-            className={actives === "products" ? "activeclass" : ""}
-          >
-            Products
-          </li>
+            <li
+              onClick={() => {
+                setactives("products");
+              }}
+              className={actives === "products" ? "activeclass" : ""}
+            >
+              Products
+            </li>
+          </ScrollLink>
         </ul>
       </div>
 
       <div className="right-contents">
-        <img src={assets.search_icon} alt="search" />
+        {/* <img src={assets.search_icon} alt="search" /> */}
         <div>
           <Link to="/cart">
             {" "}
@@ -69,10 +82,12 @@ const Navbar = ({ setshowLogin }) => {
           <div className="navbar-profile">
             <img src={assets.profile_icon} alt="" />
             <ul className="nav-profile-dropdown">
-              <li>
-                <img src={assets.bag_icon} alt="" />
-                <p>Orders</p>
-              </li>
+              <Link to="/myorders">
+                <li>
+                  <img src={assets.bag_icon} alt="" />
+                  <p>Orders</p>
+                </li>
+              </Link>
               <hr />
               <li onClick={() => logout()}>
                 <img src={assets.logout_icon} alt="" />
