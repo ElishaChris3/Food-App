@@ -52,8 +52,8 @@ const PlaceOrder = () => {
     });
 
     if (response.data.success) {
-      // const { session_url } = response.data;
-      // window.location.replace(session_url);
+      const { session_url } = response.data;
+      window.location.replace(session_url);
     } else {
       alert("error");
     }
@@ -62,7 +62,7 @@ const PlaceOrder = () => {
   useEffect(() => {
     if (!token) {
       navigate("/cart");
-    } else if (getTotalPrice() === 0) {
+    } else if (getTotalPrice === 0) {
       navigate("/cart");
     }
   }, []);

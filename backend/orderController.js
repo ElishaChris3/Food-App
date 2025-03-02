@@ -1,10 +1,13 @@
-//const Stripe = require("stripe");
+const Stripe = require("stripe");
 const orderModel = require("./orderModel");
 const userModel = require("./userModel");
+require("dotenv").config();
 
-//const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
-const FRONTEND = import.meta.env.FRONTEND_URL;
+//console.log(stripe);
+
+const FRONTEND_URL = "http://localhost:5173";
 
 const placeOrder = async (req, res) => {
   try {
@@ -21,39 +24,38 @@ const placeOrder = async (req, res) => {
     await userModel.findByIdAndUpdate(req.body.userId, { cartData: {} });
 
     // Prepare line items for Stripe
-    // const line_items = req.body.items.map((item) => ({
-    //   price_data: {
-    //     currency: "inr",
-    //     product_data: {
-    //       name: item.name,
-    //     },
-    //     unit_amount: item.price * 100 * 80, // Assuming prices are in INR
-    //   },
-    //   quantity: item.quantity,
-    // }));
+    const line_items = req.body.items.map((item) => ({
+      price_data: {
+        currency: "inr",
+        product_data: {
+          name: item.name,
+        },
+        unit_amount: item.price * 100 * 80, // Assuming prices are in INR
+      },
+      quantity: item.quantity,
+    }));
 
-    // // Add delivery charges
-    // line_items.push({
-    //   price_data: {
-    //     currency: "inr",
-    //     product_data: {
-    //       name: "Delivery Charges",
-    //     },
-    //     unit_amount: 2 * 100 * 80, // Delivery charge example (e.g., ₹160.00)
-    //   },
-    //   quantity: 1,
-    // });
+    // Add delivery charges
+    line_items.push({
+      price_data: {
+        currency: "inr",
+        product_data: {
+          name: "Delivery Charges",
+        },
+        unit_amount: 2 * 100 * 80, // Delivery charge example (e.g., ₹160.00)
+      },
+      quantity: 1,
+    });
 
     // Create a Stripe Checkout session
-    // const session = await stripe.checkout.sessions.create({
-    //   line_items: line_items,
-    //   mode: "payment",
-    //   success_url: `${FRONTEND}/myorders?success=true&orderId=${newOrder._id}`,
-    //   cancel_url: `${FRONTEND}/?success=false&orderId=${newOrder._id}`,
-    // });
+    const session = await stripe.checkout.sessions.create({
+      line_items: line_items,
+      mode: "payment",
+      success_url: `${FRONTEND_URL}/myorders?success=true&orderId=${newOrder._id}`,
+      cancel_url: `${FRONTEND_URL}/?success=false&orderId=${newOrder._id}`,
+    });
 
-    //res.json({ success: true, session_url: session.url });
-    res.json({ success: true, msg: "session" });
+    res.json({ success: true, session_url: session.url });
   } catch (error) {
     console.error(error);
     res.json({ error: "Failed to place order" });
