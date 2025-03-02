@@ -6,22 +6,19 @@ import { assets } from "../../assets/assets";
 const Order = () => {
   const [data, setData] = useState([]);
 
+  const url = import.meta.env.VITE_backend_link;
+
   const fetchOrder = async () => {
-    const response = await axios.get(
-      "http://localhost:4000/api/order/listorders"
-    );
+    const response = await axios.get(`${url}/api/order/listorders`);
     setData(response.data.data);
     console.log(response.data.data);
   };
 
   const updateStatus = async (event, orderId) => {
-    const response = await axios.post(
-      "http://localhost:4000/api/order/status",
-      {
-        orderId,
-        status: event.target.value,
-      }
-    );
+    const response = await axios.post(`${url}/api/order/status`, {
+      orderId,
+      status: event.target.value,
+    });
 
     if (response.data.success) {
       await fetchOrder();

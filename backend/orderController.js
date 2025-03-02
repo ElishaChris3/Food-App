@@ -4,7 +4,7 @@ const userModel = require("./userModel");
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
-const FRONTEND_URL = "http://localhost:5173";
+const FRONTEND = import.meta.env.FRONTEND_URL;
 
 const placeOrder = async (req, res) => {
   try {
@@ -48,8 +48,8 @@ const placeOrder = async (req, res) => {
     const session = await stripe.checkout.sessions.create({
       line_items: line_items,
       mode: "payment",
-      success_url: `${FRONTEND_URL}/myorders?success=true&orderId=${newOrder._id}`,
-      cancel_url: `${FRONTEND_URL}/?success=false&orderId=${newOrder._id}`,
+      success_url: `${FRONTEND}/myorders?success=true&orderId=${newOrder._id}`,
+      cancel_url: `${FRONTEND}/?success=false&orderId=${newOrder._id}`,
     });
 
     res.json({ success: true, session_url: session.url });
